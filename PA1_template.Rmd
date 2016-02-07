@@ -47,6 +47,7 @@ hist(sum_data$totalsteps,
      breaks = 50,col = "red",
      main = "Histogram of the Total Number of Steps per day")
 ```
+![](/path/to/hist orignal data.png)
 ##### Mean and median number of steps taken each day
 ```{r}
 meanSteps = mean(sum_data$totalsteps,na.rm = TRUE)
@@ -72,7 +73,7 @@ with(avg_data,
 ```{r}
 maxInterval = avg_data$interval[max(avg_data$avgsteps)]
 ```
-Interval with the maximum average number of steps is **1705**
+Interval with the maximum average number of steps is given by **1705-1710**
 
 ## Imputing missing data
 ##### Calculating total no. of NAs in data set
@@ -98,7 +99,10 @@ newdata$steps = t1
 ```
 ##### Calculating total number of steps taken each day
 ```{r}
-sum_data_new = newdata %>% select(steps,date) %>% group_by(date) %>% summarize(totalsteps = sum(steps))
+sum_data_new = newdata %>% 
+  select(steps,date) %>% 
+  group_by(date) %>% 
+  summarize(totalsteps = sum(steps))
 ```
 ##### Histogram of the total number of steps taken each day
 ```{r}
@@ -113,7 +117,9 @@ meanStepsNew = mean(sum_data_new$totalsteps)
 medianStepsNew = median(sum_data_new$totalsteps)
 ```
 The new mean number of steps taken each day is now **10766** while the median number of steps is **10395**
-
+The values for both mean and median have changed. Mean has changed more drastically than median.
+In this instance, imputing values have raised the overall mean of the data set. This is largely due to an inherent skew in the data set.
+By imputing mean values, we have increased the height of the histogram about the mean.
 ##### Creating factor variable for weekday/weekend
 ```{r}
 newdata$weekday = is.weekend(newdata$date)
@@ -121,7 +127,10 @@ newdata$weekday = factor(ifelse(newdata$weekday,"weekend","weekday"))
 ```
 ##### Summarizing data across 5-minute interval and weekday/weekend
 ```{r}
-sum_data_wk = newdata %>% select(steps,interval,weekday) %>% group_by(interval,weekday) %>% summarize(meansteps = mean(steps))
+sum_data_wk = newdata %>% 
+  select(steps,interval,weekday) %>% 
+  group_by(interval,weekday) %>% 
+  summarize(meansteps = mean(steps))
 ```
 ## Panel plot comparing the average number of steps taken per 5-minute interval across weekdays and weekends
 ```{r}
@@ -131,7 +140,7 @@ ggplot(data = sum_data_wk, aes(x = interval,y = meansteps)) +
   xlab("5-minute Intervals") +
   ylab("Average No. of Steps")
 ```
-
+It seems like for **weekdays**, there is much higher activity in the *earlier* part of the day. However, the *average* activity in the **afternoon** is lower as compared to the *weekends*.
 
 
 
