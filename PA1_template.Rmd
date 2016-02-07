@@ -36,8 +36,8 @@ fulldata$date = ymd(fulldata$date)
 ```{r}
 sum_data = fulldata %>% select(steps,date) %>% group_by(date) %>% summarize(totalsteps = sum(steps,na.rm=TRUE))
 ```
-## Histogram of the total number of steps taken each day
-### X-label is the total no. of steps per day, Y-label is the no. of counts of those occurences 
+### Histogram of the total number of steps taken each day
+#### *X-label is the total no. of steps per day, Y-label is the no. of counts of those occurences* 
 ```{r}
 hist(sum_data$totalsteps,
      xlab = "Total Steps per day",
