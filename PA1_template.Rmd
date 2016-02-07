@@ -52,7 +52,7 @@ medianSteps = median(sum_data$totalsteps,na.rm = TRUE)
 Mean no. of steps is given by **9354** and median no. of steps is given by **10395**
 
 ### Time series plot of the average number of steps taken
-```{r}
+```{r,echo = FALSE}
 avg_data = fulldata %>% select(steps,interval) %>% group_by(interval) %>% summarize(avgsteps = mean(steps,na.rm=TRUE))
 with(avg_data,
      plot(avgsteps~interval,
