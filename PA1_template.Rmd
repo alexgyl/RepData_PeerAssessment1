@@ -143,6 +143,7 @@ ggplot(data = sum_data_wk, aes(x = interval,y = meansteps)) +
   ylab("Average No. of Steps")
 ```
 ![](avg steps per time interval with weekday and weekend.png)
+
 It seems like for **weekdays**, there is much higher activity in the *earlier* part of the day. However, the *average* activity in the **afternoon** is lower as compared to the *weekends*.
 
 
