@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1454849735859.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F3210CAD",
+    "lastKnownWriteTime" : 7011605692497750387,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "pv3pzb5m2z",
+        "caption" : "sum_data",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=sum_data&cache_key=pv3pzb5m2z",
+        "displayedObservations" : 61,
+        "environment" : "",
+        "object" : "sum_data",
+        "totalObservations" : 61,
+        "variables" : 2
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

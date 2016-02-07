@@ -1,25 +1,33 @@
 ---
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
+title: "PA1_template"
+output: html_document
 ---
 
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-## Loading and preprocessing the data
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
+# Reproducible Research Course Project 1
+### Required libraries
+```{r}
+library(lubridate)
+library(dplyr)
+library(chron)
+library(ggplot2)
+```
+## Code for reading in the dataset and/or processing the data
+```{r}
+fulldata = read.csv("activity.csv",header = TRUE,sep = ",",na.strings = "NA")
+fulldata = tbl_df(fulldata)
+```
+# Changing the date variable to appropriate format
+```{r}
+fulldata$date = ymd(fulldata$date)
+```
+You can also embed plots, for example:
 
+```{r, echo=FALSE}
+plot(cars)
+```
 
-## What is mean total number of steps taken per day?
-
-
-
-## What is the average daily activity pattern?
-
-
-
-## Imputing missing values
-
-
-
-## Are there differences in activity patterns between weekdays and weekends?
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

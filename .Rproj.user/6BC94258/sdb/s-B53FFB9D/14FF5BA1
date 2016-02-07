@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1454850827151.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "14FF5BA1",
+    "lastKnownWriteTime" : 31244048835477601,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "6gda267wi7",
+        "caption" : "sum_data_wk",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=sum_data_wk&cache_key=6gda267wi7",
+        "displayedObservations" : 576,
+        "environment" : "",
+        "object" : "sum_data_wk",
+        "totalObservations" : 576,
+        "variables" : 3
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

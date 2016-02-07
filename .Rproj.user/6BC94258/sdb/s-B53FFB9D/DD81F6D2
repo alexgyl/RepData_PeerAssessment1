@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1454849751832.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "DD81F6D2",
+    "lastKnownWriteTime" : 7011605692497750387,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "fm91jxdzx3",
+        "caption" : "sum_data_new",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=sum_data_new&cache_key=fm91jxdzx3",
+        "displayedObservations" : 61,
+        "environment" : "",
+        "object" : "sum_data_new",
+        "totalObservations" : 61,
+        "variables" : 2
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

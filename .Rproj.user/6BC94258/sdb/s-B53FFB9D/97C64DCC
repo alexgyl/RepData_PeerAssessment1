@@ -1,0 +1,18 @@
+{
+    "contents" : "---\ntitle: \"PA1_template\"\noutput: html_document\n---\n\nThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.\n\nWhen you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:\n\n# Reproducible Research Course Project 1\n### Required libraries\n```{r}\nlibrary(lubridate)\nlibrary(dplyr)\nlibrary(chron)\nlibrary(ggplot2)\n```\n## Code for reading in the dataset and/or processing the data\n```{r}\nfulldata = read.csv(\"activity.csv\",header = TRUE,sep = \",\",na.strings = \"NA\")\nfulldata = tbl_df(fulldata)\n```\n# Changing the date variable to appropriate format\n```{r}\nfulldata$date = ymd(fulldata$date)\n```\nYou can also embed plots, for example:\n\n```{r, echo=FALSE}\nplot(cars)\n```\n\nNote that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.\n",
+    "created" : 1454851451166.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4137816252",
+    "id" : "97C64DCC",
+    "lastKnownWriteTime" : 1454851940,
+    "path" : "G:/John Hopkins Data Science Specialization Coursera/Reproducible Research/Course Project 1/RepData_PeerAssessment1/PA1_template.Rmd",
+    "project_path" : "PA1_template.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}
