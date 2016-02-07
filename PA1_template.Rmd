@@ -27,33 +27,40 @@ library(ggplot2)
 fulldata = read.csv("activity.csv",header = TRUE,sep = ",",na.strings = "NA")
 fulldata = tbl_df(fulldata)
 ```
-### Changing the date variable to appropriate format
+##### Changing the date variable to appropriate format
 ```{r}
 fulldata$date = ymd(fulldata$date)
 ```
 ## Initial analysis of data
-### Calculating total number of steps taken each day
+##### Calculating total number of steps taken each day
 ```{r}
-sum_data = fulldata %>% select(steps,date) %>% group_by(date) %>% summarize(totalsteps = sum(steps,na.rm=TRUE))
+sum_data = fulldata %>% 
+  select(steps,date) %>% 
+  group_by(date) %>% 
+  summarize(totalsteps = sum(steps,na.rm=TRUE))
 ```
-### Histogram of the total number of steps taken each day
-#### *X-label is the total no. of steps per day, Y-label is the no. of counts of those occurences* 
+##### Histogram of the total number of steps taken each day
+###### *X-label is the total no. of steps per day, Y-label is the no. of counts of those occurences* 
 ```{r}
 hist(sum_data$totalsteps,
      xlab = "Total Steps per day",
      breaks = 50,col = "red",
      main = "Histogram of the Total Number of Steps per day")
 ```
-### Mean and median number of steps taken each day
+##### Mean and median number of steps taken each day
 ```{r}
 meanSteps = mean(sum_data$totalsteps,na.rm = TRUE)
 medianSteps = median(sum_data$totalsteps,na.rm = TRUE)
 ```
 Mean no. of steps is given by **9354** and median no. of steps is given by **10395**
 
-### Time series plot of the average number of steps taken
+##### Time series plot of the average number of steps taken
 ```{r}
-avg_data = fulldata %>% select(steps,interval) %>% group_by(interval) %>% summarize(avgsteps = mean(steps,na.rm=TRUE))
+avg_data = fulldata %>% 
+  select(steps,interval) %>% 
+  group_by(interval) %>% 
+  summarize(avgsteps = mean(steps,na.rm=TRUE))
+
 with(avg_data,
      plot(avgsteps~interval,
           type = "l",
@@ -61,19 +68,19 @@ with(avg_data,
           xlab = "Time Interval",
           main = "Average number of steps per time interval"))
 ```
-### The 5-minute interval that, on average, contains the maximum number of steps
+##### The 5-minute interval that, on average, contains the maximum number of steps
 ```{r}
 maxInterval = avg_data$interval[max(avg_data$avgsteps)]
 ```
 Interval with the maximum average number of steps is **1705**
 
 ## Imputing missing data
-### Calculating total no. of NAs in data set
+##### Calculating total no. of NAs in data set
 ```{r}
 numNA = sum(is.na(fulldata$steps))
 ```
 There are a total of **2304** missing values
-### To impute missing data, we will use the **mean** for the relavant 5min interval for the day
+##### To impute missing data, we will use the **mean** for the relavant 5min interval for the day through a custom function that assigns the correct value if a *NA* is seen
 ```{r}
 newdata = fulldata
 imputeData = function(x1,x2){
@@ -83,20 +90,17 @@ imputeData = function(x1,x2){
   else
     x1 = x1
 }
-```
-### This applies a custom function to the data and returns the mean of the interval if the original input is NA
-```{r}
 t1 = as.vector(unlist(mapply(imputeData,newdata$steps,newdata$interval,SIMPLIFY = TRUE)))
 ```
-### Overwriting the original data with the new imputed data
+##### Overwriting the original data with the new imputed data
 ```{r}
 newdata$steps = t1
 ```
-### Calculating total number of steps taken each day
+##### Calculating total number of steps taken each day
 ```{r}
 sum_data_new = newdata %>% select(steps,date) %>% group_by(date) %>% summarize(totalsteps = sum(steps))
 ```
-### Histogram of the total number of steps taken each day
+##### Histogram of the total number of steps taken each day
 ```{r}
 hist(sum_data_new$totalsteps,
      xlab = "Total Steps per day",
@@ -110,12 +114,12 @@ medianStepsNew = median(sum_data_new$totalsteps)
 ```
 The new mean number of steps taken each day is now **10766** while the median number of steps is **10395**
 
-### Creating factor variable for weekday/weekend
+##### Creating factor variable for weekday/weekend
 ```{r}
 newdata$weekday = is.weekend(newdata$date)
 newdata$weekday = factor(ifelse(newdata$weekday,"weekend","weekday"))
 ```
-### Summarizing data across 5-minute interval and weekday/weekend
+##### Summarizing data across 5-minute interval and weekday/weekend
 ```{r}
 sum_data_wk = newdata %>% select(steps,interval,weekday) %>% group_by(interval,weekday) %>% summarize(meansteps = mean(steps))
 ```
