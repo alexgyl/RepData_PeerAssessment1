@@ -47,7 +47,7 @@ hist(sum_data$totalsteps,
      breaks = 50,col = "red",
      main = "Histogram of the Total Number of Steps per day")
 ```
-![](/path/to/hist orignal data.png)
+![](hist orignal data.png)
 ##### Mean and median number of steps taken each day
 ```{r}
 meanSteps = mean(sum_data$totalsteps,na.rm = TRUE)
