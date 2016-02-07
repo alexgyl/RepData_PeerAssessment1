@@ -44,14 +44,15 @@ hist(sum_data$totalsteps,
      breaks = 50,col = "red",
      main = "Histogram of the Total Number of Steps per day")
 ```
-## Mean and median number of steps taken each day
+### Mean and median number of steps taken each day
 ```{r}
 meanSteps = mean(sum_data$totalsteps,na.rm = TRUE)
 medianSteps = median(sum_data$totalsteps,na.rm = TRUE)
 ```
-Mean no. of steps is given by 9354 and median no. of steps is given by 10395
+Mean no. of steps is given by **9354** and median no. of steps is given by **10395**
 
-## Time series plot of the average number of steps taken
+### Time series plot of the average number of steps taken
+```{r}
 avg_data = fulldata %>% select(steps,interval) %>% group_by(interval) %>% summarize(avgsteps = mean(steps,na.rm=TRUE))
 with(avg_data,
      plot(avgsteps~interval,
@@ -59,7 +60,7 @@ with(avg_data,
           ylab = "Average No. of Steps",
           xlab = "Time Interval",
           main = "Average number of steps per time interval"))
-
+```
 ## The 5-minute interval that, on average, contains the maximum number of steps
 maxInterval = avg_data$interval[max(avg_data$avgsteps)]
 
