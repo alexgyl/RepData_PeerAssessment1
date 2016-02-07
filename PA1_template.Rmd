@@ -22,36 +22,38 @@ fulldata = tbl_df(fulldata)
 fulldata$date = ymd(fulldata$date)
 ```
 ## Initial analysis of data
-##### Calculating total number of steps taken each day
+##### 1.Calculating total number of steps taken each day
 ```{r}
 sum_data = fulldata %>% 
   select(steps,date) %>% 
   group_by(date) %>% 
   summarize(totalsteps = sum(steps,na.rm=TRUE))
 ```
-##### Histogram of the total number of steps taken each day
+##### 2.Histogram of the total number of steps taken each day
 ###### *X-label is the total no. of steps per day, Y-label is the no. of counts of those occurences* 
-```{r}
+```{r,eval = FALSE}
 hist(sum_data$totalsteps,
      xlab = "Total Steps per day",
      breaks = 50,col = "red",
      main = "Histogram of the Total Number of Steps per day")
 ```
 ![](hist orignal data.png)
-##### Mean and median number of steps taken each day
+
+##### 3.Mean and median number of steps taken each day
 ```{r}
 meanSteps = mean(sum_data$totalsteps,na.rm = TRUE)
 medianSteps = median(sum_data$totalsteps,na.rm = TRUE)
 ```
 Mean no. of steps is given by **9354** and median no. of steps is given by **10395**
 
-##### Time series plot of the average number of steps taken
+##### 4.Time series plot of the average number of steps taken
 ```{r}
 avg_data = fulldata %>% 
   select(steps,interval) %>% 
   group_by(interval) %>% 
   summarize(avgsteps = mean(steps,na.rm=TRUE))
-
+```
+```{r, eval = FALSE}
 with(avg_data,
      plot(avgsteps~interval,
           type = "l",
@@ -60,7 +62,8 @@ with(avg_data,
           main = "Average number of steps per time interval"))
 ```
 ![](avg steps per time interval.png)
-##### The 5-minute interval that, on average, contains the maximum number of steps
+
+##### 5.The 5-minute interval that, on average, contains the maximum number of steps
 ```{r}
 maxInterval = avg_data$interval[max(avg_data$avgsteps)]
 ```
@@ -96,13 +99,14 @@ sum_data_new = newdata %>%
   summarize(totalsteps = sum(steps))
 ```
 ##### Histogram of the total number of steps taken each day
-```{r}
+```{r,eval = FALSE}
 hist(sum_data_new$totalsteps,
      xlab = "Total Steps per day",
      breaks = 50,col = "red",
      main = "Histogram of the Total Number of Steps per day")
 ```
 ![](hist imputed data.png)
+
 ## Mean and median number of steps taken each day after imputing values
 ```{r}
 meanStepsNew = mean(sum_data_new$totalsteps)
@@ -125,7 +129,7 @@ sum_data_wk = newdata %>%
   summarize(meansteps = mean(steps))
 ```
 ## Panel plot comparing the average number of steps taken per 5-minute interval across weekdays and weekends
-```{r}
+```{r,eval = FALSE}
 ggplot(data = sum_data_wk, aes(x = interval,y = meansteps)) +
   geom_line() +
   facet_grid(weekday~.) + 
