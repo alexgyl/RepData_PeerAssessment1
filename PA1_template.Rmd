@@ -1,20 +1,10 @@
 ---
 title: "PA1_template"
+author: "Goh Yong Liang"
 output: html_document
 ---
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-
-# Reproducible Research Course Project 1
+# Reproducible Research Course Peer Assessment 1
 ### Required libraries
 ```{r}
 library(lubridate)
@@ -118,7 +108,7 @@ hist(sum_data_new$totalsteps,
 meanStepsNew = mean(sum_data_new$totalsteps)
 medianStepsNew = median(sum_data_new$totalsteps)
 ```
-The new mean number of steps taken each day is now **10766** while the median number of steps is **10395**
+The new mean number of steps taken each day is now **10766** while the median number of steps is **10395**.
 The values for both mean and median have changed. Mean has changed more drastically than median.
 In this instance, imputing values have raised the overall mean of the data set. This is largely due to an inherent skew in the data set.
 By imputing mean values, we have increased the height of the histogram about the mean.
