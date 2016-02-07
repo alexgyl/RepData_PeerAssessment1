@@ -69,6 +69,7 @@ with(avg_data,
           xlab = "Time Interval",
           main = "Average number of steps per time interval"))
 ```
+![](avg steps per time interval.png)
 ##### The 5-minute interval that, on average, contains the maximum number of steps
 ```{r}
 maxInterval = avg_data$interval[max(avg_data$avgsteps)]
@@ -111,6 +112,7 @@ hist(sum_data_new$totalsteps,
      breaks = 50,col = "red",
      main = "Histogram of the Total Number of Steps per day")
 ```
+![](hist imputed data.png)
 ## Mean and median number of steps taken each day after imputing values
 ```{r}
 meanStepsNew = mean(sum_data_new$totalsteps)
@@ -140,6 +142,7 @@ ggplot(data = sum_data_wk, aes(x = interval,y = meansteps)) +
   xlab("5-minute Intervals") +
   ylab("Average No. of Steps")
 ```
+![](avg steps per time interval with weekday and weekend.png)
 It seems like for **weekdays**, there is much higher activity in the *earlier* part of the day. However, the *average* activity in the **afternoon** is lower as compared to the *weekends*.
 
 
